@@ -18,7 +18,7 @@ jobs:
       - name: 기본Repository Branch commit check
         uses: devload/auto_fork_pr@main
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.ACCESS_TOKEN }}
           owner: onycom-imqa
           repository: IMQA-Android-Core
           branch: master
