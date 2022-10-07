@@ -41,3 +41,11 @@ jobs:
       - name: NotequalCheck
         run: echo " Not if Check ok"
         if: ${{ steps.target_action.outputs.result != steps.fork_action.outputs.result }}
+      - name: Fork Repository Branch commit check
+        id: merge_action
+        uses: devload/auto_fork_pr@merge_fork
+        with:
+          githubToken: ${{ secrets.ACCESS_TOKEN }}
+          owner: onycom-imqa
+          repository: IMQA-Android-Core_QA
+          branch: master
