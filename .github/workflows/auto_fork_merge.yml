@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: 기본Repository Branch commit check
         id: step1
-        uses: devload/auto_fork_pr@main
+        uses: devload/action_branch_sha@main
         with:
           githubToken: ${{ secrets.ACCESS_TOKEN }}
           owner: onycom-imqa
@@ -25,7 +25,7 @@ jobs:
       - name: Get color
         run: echo "기본Repository Branch commit Hash is ${{ steps.step1.outputs.upstreamRepoKey }}"
       - name: Fork Repository Branch commit check
-        uses: devload/auto_fork_pr@main
+        uses: devload/action_branch_sha@main
         with:
           githubToken: ${{ secrets.ACCESS_TOKEN }}
           owner: onycom-imqa
