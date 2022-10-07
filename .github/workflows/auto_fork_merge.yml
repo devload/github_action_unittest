@@ -13,8 +13,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 기본Repository Branch commit check
-        id: step1
+      - name: Target Repository Branch commit check
+        id: target_action
         uses: devload/auto_fork_pr@find_branch_hash
         with:
           githubToken: ${{ secrets.ACCESS_TOKEN }}
@@ -22,9 +22,10 @@ jobs:
           repository: IMQA-Android-Core
           branch: master
           shaKey: upstreamRepoKey
-      - name: Get color
-        run: echo "기본Repository Branch commit Hash is ${{ steps.step1.outputs.result }}"
+      - name: Target Hash Print
+        run: echo "Target Repository Branch commit Hash is ${{ steps.target_action.outputs.result }}"
       - name: Fork Repository Branch commit check
+        id: fork_action
         uses: devload/auto_fork_pr@find_branch_hash
         with:
           githubToken: ${{ secrets.ACCESS_TOKEN }}
@@ -32,3 +33,11 @@ jobs:
           repository: IMQA-Android-Core_QA
           branch: master
           shaKey: ForkRepoKey
+      - name: Fork Hash Print
+        run: echo "Fork Repository Branch commit Hash is ${{ steps.fork_action.outputs.result }}"
+      - name: equalCheck
+        run: echo "if Check ok"
+        if: contains(steps.target_action.outputs.result, steps.fork_action.outputs.result)
+      - name: NotequalCheck
+        run: echo " Not if Check ok"
+        if: !contains(steps.target_action.outputs.result, steps.fork_action.outputs.result)
