@@ -1,0 +1,25 @@
+name: Auto Fork Merge
+
+on:
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: 기본Repository Branch commit check
+        uses: devload/auto_fork_pr@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          owner: onycom-imqa
+          repository: IMQA-Android-Core
+          branch: master
+          shaKey: upstreamRepoKey
