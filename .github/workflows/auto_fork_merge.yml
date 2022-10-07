@@ -23,7 +23,7 @@ jobs:
           branch: master
           shaKey: upstreamRepoKey
       - name: Get color
-        run: echo "기본Repository Branch commit Hash is ${{ steps.step1.outputs.upstreamRepoKey }}"
+        run: echo "기본Repository Branch commit Hash is ${{ steps.step1.outputs.result }}"
       - name: Fork Repository Branch commit check
         uses: devload/auto_fork_pr@find_branch_hash
         with:
