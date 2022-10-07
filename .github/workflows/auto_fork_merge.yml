@@ -58,4 +58,5 @@ jobs:
           repository: IMQA-Android-Core_QA
           head: master
           base: prod
+          mainBranchKey: ${{ steps.target_action.outputs.result }}
         if: ${{ steps.target_action.outputs.result != steps.fork_action.outputs.result }}
