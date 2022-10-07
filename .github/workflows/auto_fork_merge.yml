@@ -49,3 +49,13 @@ jobs:
           owner: onycom-imqa
           repository: IMQA-Android-Core_QA
           branch: master
+      - name: Make Pull Request
+        id: makePR
+        uses: devload/auto_fork_pr@make_PR
+        with:
+          githubToken: ${{ secrets.ACCESS_TOKEN }}
+          owner: onycom-imqa
+          repository: IMQA-Android-Core_QA
+          head: master
+          base: prod
+        if: ${{ steps.target_action.outputs.result != steps.fork_action.outputs.result }}
