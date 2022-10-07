@@ -37,7 +37,7 @@ jobs:
         run: echo "Fork Repository Branch commit Hash is ${{ steps.fork_action.outputs.result }}"
       - name: equalCheck
         run: echo "if Check ok"
-        if: contains(steps.target_action.outputs.result, steps.fork_action.outputs.result)
+        if: ${{ steps.target_action.outputs.result == steps.fork_action.outputs.result }}
       - name: NotequalCheck
         run: echo " Not if Check ok"
-        if: !contains(steps.target_action.outputs.result, steps.fork_action.outputs.result)
+        if: ${{ steps.target_action.outputs.result != steps.fork_action.outputs.result }}
