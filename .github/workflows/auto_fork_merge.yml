@@ -12,8 +12,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-
     steps:
       - name: 기본Repository Branch commit check
         uses: devload/auto_fork_pr@main
@@ -23,3 +21,11 @@ jobs:
           repository: IMQA-Android-Core
           branch: master
           shaKey: upstreamRepoKey
+      - name: Fork Repository Branch commit check
+        uses: devload/auto_fork_pr@main
+        with:
+          githubToken: ${{ secrets.ACCESS_TOKEN }}
+          owner: onycom-imqa
+          repository: IMQA-Android-Core_QA
+          branch: master
+          shaKey: ForkRepoKey
