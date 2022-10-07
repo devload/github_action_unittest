@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 기본Repository Branch commit check
+        id: step1
         uses: devload/auto_fork_pr@main
         with:
           githubToken: ${{ secrets.ACCESS_TOKEN }}
@@ -21,6 +22,8 @@ jobs:
           repository: IMQA-Android-Core
           branch: master
           shaKey: upstreamRepoKey
+      - name: Get color
+        run: echo "기본Repository Branch commit Hash is ${{ steps.step1.outputs.upstreamRepoKey }}"
       - name: Fork Repository Branch commit check
         uses: devload/auto_fork_pr@main
         with:
