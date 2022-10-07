@@ -16,7 +16,7 @@ jobs:
       - name: 기본Repository Branch commit check
         id: step1
         uses: devload/auto_fork_pr@find_branch_hash
-        with:
+        env:
           githubToken: ${{ secrets.ACCESS_TOKEN }}
           owner: onycom-imqa
           repository: IMQA-Android-Core
@@ -26,7 +26,7 @@ jobs:
         run: echo "기본Repository Branch commit Hash is ${{ steps.step1.outputs.upstreamRepoKey }}"
       - name: Fork Repository Branch commit check
         uses: devload/auto_fork_pr@find_branch_hash
-        with:
+        env:
           githubToken: ${{ secrets.ACCESS_TOKEN }}
           owner: onycom-imqa
           repository: IMQA-Android-Core_QA
